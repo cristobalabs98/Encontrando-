@@ -1,0 +1,29 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+
+development:
+  <<: *default
+  database: encontrado_development
+  username: cristobal
+  password: admin1234
+  host: localhost
+  port: 5432
+
+test:
+  <<: *default
+  database: encontrado_test
+  username: cristobal
+  password: admin1234
+  host: localhost
+  port: 5432
+
+production:
+  <<: *default
+  database: encontrado_production
+  username: encontrado
+  password: <%= ENV["ENCONTRADO_DATABASE_PASSWORD"] %>
